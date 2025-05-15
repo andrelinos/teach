@@ -3,7 +3,6 @@ import {
   CarouselCases,
   FeaturesCount,
   Footer,
-  Header,
   Hero,
   JoinAWorldOfLearning,
   MeetInternational,
@@ -37,7 +36,7 @@ export const metadata: Metadata = getSEOTags({
 export default function Home() {
   return (
     <div className="mx-auto flex min-h-screen w-full flex-col">
-      <Header />
+      {/* <Header /> */}
       <Hero />
 
       <VideoAppExplanation />

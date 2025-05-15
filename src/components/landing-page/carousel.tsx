@@ -86,10 +86,8 @@ export function CarouselCases() {
       className="relative mt-16 flex min-h-[565px] w-full justify-center overflow-hidden bg-accent-yellow md:min-h-[1050px] lg:max-h-[575px] lg:min-h-auto lg:overflow-visible"
     >
       <div className="relative mx-auto w-full max-w-7xl px-4">
-        {/* Elemento decorativo de fundo */}
         <div className="absolute top-[406px] right-8 z-0 h-72 w-80 rotate-[-30deg] rounded-[50px] bg-black md:right-17 md:h-[500px] md:w-[634px] lg:top-4 lg:right-30 lg:h-[573px] lg:w-[496px]" />
 
-        {/* Imagem decorativa */}
         <div className="pointer-events-none absolute bottom-4 left-12 z-20 h-[155px] w-[155px] md:bottom-[9.5rem] md:left-22 lg:right-[27rem] lg:bottom-[2.5rem] lg:left-auto">
           <Image
             src="/decoration-photo-carousel.png"
@@ -100,7 +98,6 @@ export function CarouselCases() {
           />
         </div>
 
-        {/* Ícone de chat */}
         <div className="absolute right-9 bottom-[20.625rem] z-20 h-12 w-12 md:top-[18rem] md:right-[9rem] lg:top-[7px] lg:right-[10rem]">
           <Image
             src="/chat-icon.svg"
@@ -111,7 +108,6 @@ export function CarouselCases() {
           />
         </div>
 
-        {/* Container do carousel */}
         <div
           className="mx-auto my-8 w-full max-w-[1136px] overflow-hidden"
           aria-label="Carousel Cases"
@@ -150,7 +146,6 @@ export function CarouselCases() {
             </div>
           </div>
 
-          {/* Setas de navegação */}
           <div className="-translate-y-1/2 absolute top-1/2 left-2 z-20 hidden lg:flex">
             <button type="button" onClick={scrollPrev} className="p-2">
               <NavArrowLeft className="h-8 w-8 text-white" />
@@ -162,9 +157,8 @@ export function CarouselCases() {
             </button>
           </div>
 
-          {/* Indicadores da navegação */}
           {scrollSnaps.length > 0 && (
-            <div className="absolute bottom-[22rem] left-8 z-20 flex transform gap-2 transition-all duration-500 ease-in-out md:bottom-[37rem] md:left-[2rem] lg:bottom-[7.5rem] lg:left-[5.510rem]">
+            <div className="absolute bottom-[22rem] left-8 z-20 flex transform gap-2 transition-all duration-500 ease-in-out md:bottom-[45rem] md:left-[2rem] lg:bottom-[7.5rem] lg:left-[5.510rem]">
               {scrollSnaps.map((_, index) => (
                 <button
                   key={String(index)}
