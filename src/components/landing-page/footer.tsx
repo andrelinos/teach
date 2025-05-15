@@ -12,8 +12,8 @@ export function Footer() {
         <div className="mb-8 w-fit">
           <Image src="/logo-white.svg" alt="logo" width={173.33} height={35} />
         </div>
-        <div className="flex w-full flex-col gap-8 pb-12 md:justify-around lg:flex-row">
-          <div className="flex flex-col gap-4 text-white">
+        <div className="flex w-full flex-wrap gap-8 pb-12 lg:flex-row lg:justify-around">
+          <div className="flex w-44 flex-col gap-4 text-white lg:w-fit">
             <h2 className="font-medium">Product</h2>
             <ul className="flex flex-col gap-4">
               <li>Pricing</li>
@@ -28,7 +28,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-4 text-white">
+          <div className="flex w-44 flex-col gap-4 text-white lg:w-fit">
             <h2 className="font-medium">Solutions</h2>
             <ul className="flex flex-col gap-4">
               <li>Brainstorming</li>
@@ -38,7 +38,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-4 text-white">
+          <div className="flex w-44 flex-col gap-4 text-white lg:w-fit">
             <h2 className="font-medium">Resources</h2>
             <ul className="flex flex-col gap-4">
               <li>Help Center</li>
@@ -48,7 +48,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-4 text-white">
+          <div className="flex w-44 flex-col gap-4 text-white lg:w-fit">
             <h2 className="font-medium">Support</h2>
             <ul className="flex flex-col gap-4">
               <li>Contact Us</li>
@@ -58,7 +58,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-4 text-white">
+          <div className="flex w-44 flex-col gap-4 text-white lg:w-fit">
             <h2 className="font-medium">Company</h2>
             <ul className="flex flex-col gap-4">
               <li>About</li>
@@ -73,7 +73,7 @@ export function Footer() {
         </div>
       </div>
       <div className="flex w-full max-w-7xl flex-col justify-between px-4 py-8 text-text-secondary lg:flex-row lg:items-center">
-        <span className="mb-6 flex-1 text-nowrap px-4 lg:mb-0">
+        <span className="mb-6 min-w-fit px-4 lg:mb-0">
           uteach @ 2023. All rights reserved.
         </span>
         <div className="flex w-full justify-between gap-8 lg:justify-end">
