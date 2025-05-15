@@ -1,0 +1,14 @@
+# *
+
+User-agent: *
+Allow: /
+
+# Host: https://teach.com/
+
+# Sitemap:
+Sitemap: https://teach.com/sitemap.xml
+
+# Routes
+# /route1
+# /route2
+

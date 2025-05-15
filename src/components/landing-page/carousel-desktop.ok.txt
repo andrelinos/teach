@@ -1,0 +1,173 @@
+'use client'
+
+import useEmblaCarousel from 'embla-carousel-react'
+import { NavArrowLeft, NavArrowRight } from 'iconoir-react'
+import Image from 'next/image'
+import { useCallback, useEffect, useState } from 'react'
+
+const slides = [
+  {
+    text: 'Id urna, nisl, ut quam. Diam suspendisse fringilla quam arcu mattis est velit in. Nibh in purus sit convallis phasellus ut. At vel erat ultricies commodo. Neque suspendisse a habitasse commodo.',
+    name: 'Marie Poirot',
+    company: 'Bigapp',
+    imageUrl: '/marie-poirot.png',
+  },
+  {
+    text: 'Id urna, nisl, ut quam. Diam suspendisse fringilla quam arcu mattis est velit in. Nibh in purus sit convallis phasellus ut. At vel erat ultricies commodo. Neque suspendisse a habitasse commodo.',
+    name: 'Marie Poirot',
+    company: 'Bigapp',
+    imageUrl: '/marie-poirot.png',
+  },
+  {
+    text: 'Id urna, nisl, ut quam. Diam suspendisse fringilla quam arcu mattis est velit in. Nibh in purus sit convallis phasellus ut. At vel erat ultricies commodo. Neque suspendisse a habitasse commodo.',
+    name: 'Marie Poirot',
+    company: 'Bigapp',
+    imageUrl: '/marie-poirot.png',
+  },
+  {
+    text: 'Id urna, nisl, ut quam. Diam suspendisse fringilla quam arcu mattis est velit in. Nibh in purus sit convallis phasellus ut. At vel erat ultricies commodo. Neque suspendisse a habitasse commodo.',
+    name: 'Antony Poirot',
+    company: 'AppMaker',
+    imageUrl: '/marie-poirot.png', // ajuste a URL da imagem conforme necessário
+  },
+  {
+    text: 'Id urna, nisl, ut quam. Diam suspendisse fringilla quam arcu mattis est velit in. Nibh in purus sit convallis phasellus ut. At vel erat ultricies commodo. Neque suspendisse a habitasse commodo.',
+    name: 'Antony Poirot',
+    company: 'AppMaker',
+    imageUrl: '/marie-poirot.png', // ajuste a URL da imagem conforme necessário
+  },
+]
+export function CarouselCases() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (emblaApi) emblaApi.scrollTo(index)
+    },
+    [emblaApi]
+  )
+
+  useEffect(() => {
+    if (!emblaApi) return
+
+    try {
+      setScrollSnaps(emblaApi.scrollSnapList())
+      setSelectedIndex(emblaApi.selectedScrollSnap())
+
+      const onSelect = () => {
+        setSelectedIndex(emblaApi.selectedScrollSnap())
+      }
+
+      emblaApi.on('select', onSelect)
+
+      return () => {
+        emblaApi.off('select', onSelect)
+      }
+    } catch (error) {
+      // Handle error if needed
+    }
+  }, [emblaApi])
+  return (
+    <section
+      id="carousel-cases"
+      aria-label="Carousel Cases"
+      className="relative mt-16 flex min-h-[565px] w-full justify-center bg-accent-yellow py-8"
+    >
+      <div
+        className="relative mx-auto w-full max-w-7xl"
+        aria-label="Carousel Cases"
+      >
+        <div className="absolute top-2 right-30 z-0 h-[325.74px] w-[375.63px] rotate-[-30deg] rounded-[50px] bg-black md:h-[573px] md:w-[496px]" />
+        <div className="absolute z-20 size-[155px] md:right-[458px] md:bottom-[17px]">
+          <Image
+            src="/decoration-photo-carousel.png"
+            alt=""
+            width={155}
+            height={155}
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute top-[7px] right-[164px] z-20 size-[48px]">
+          <Image
+            src="/chat-icon.svg"
+            alt=""
+            width={48}
+            height={48}
+            className="object-cover"
+          />
+        </div>
+        <div
+          className=" mx-auto my-8 w-full max-w-[1136px] overflow-hidden"
+          aria-label="Carousel Cases"
+        >
+          <div className="" ref={emblaRef}>
+            <div className="flex">
+              {slides.map((slide, index) => (
+                <div
+                  key={String(index)}
+                  className="relative flex min-w-full items-center justify-center py-8"
+                >
+                  <div className="z-10 flex w-full flex-col items-center justify-between text-accent-deep-blue md:flex-row">
+                    <div className="max-w-[550px] pb-20">
+                      <p className=" text-2xl leading-9">{slide.text}</p>
+                      <div className="mt-4 flex flex-col text-2xl">
+                        <span>{slide.name},</span>
+                        <span className="font-bold ">{slide.company}</span>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-1/2">
+                      <Image
+                        src={slide.imageUrl}
+                        alt="Imagem do slide"
+                        width={528}
+                        height={415}
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="-translate-y-1/2 absolute top-1/2 left-0 z-20 transform">
+            <button type="button" onClick={scrollPrev} className="pr-6">
+              <NavArrowLeft className="size-16 text-white" />
+            </button>
+          </div>
+          <div className="-translate-y-1/2 absolute top-1/2 right-0 z-20 transform">
+            <button type="button" onClick={scrollNext} className="pl-6 ">
+              <NavArrowRight className="size-16 text-white" />
+            </button>
+          </div>
+
+          {scrollSnaps.length > 0 && (
+            <div className="absolute bottom-[118px] left-[72px] z-20 flex justify-center gap-2 transition-all duration-500 ease-in-out">
+              {scrollSnaps.map((_, index) => (
+                <button
+                  type="button"
+                  key={String(index)}
+                  onClick={() => scrollTo(index)}
+                  className={`h-2 w-2 rounded-full ${
+                    index === selectedIndex ? 'w-8 bg-black' : 'bg-white'
+                  }`}
+                  aria-label={`Slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
